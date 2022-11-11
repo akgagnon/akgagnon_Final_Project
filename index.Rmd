@@ -7,8 +7,16 @@ output:
     self_contained: false
 ---
 
+```{r setup, include = FALSE}
+library(tidyverse)
+```
 
 
 ## Project thoughts
 
-I would like to research data that explores how education level and access to healthcare are related.
+I would like to research if female or male candidates are more likely run for public office multiple times. I hypothesize
+
+```{r}
+read_csv()
+```
+

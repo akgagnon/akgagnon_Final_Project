@@ -1,0 +1,21 @@
+---
+title: "akgagnon_Final_Project"
+author: "Annika Gagnon"
+date: "2022-10-20"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+groundhog <- read_csv("data/archive.csv")
+```
+
+For my final project I will be exploring Punxsutawney Phil's accuracy. In other words, has Punxsutawney Phil historically more likely to see his shadow if the temperature stays cold? I hypothesize that Punxsutawney Phil is more likely to predict cold temperatures or "six more weeks of winter" in Pennysilvania when the groundhog day ceremony takes place, but that his accuracy decreases for the surrounding areas. This is because I think that while a groundhog may be able to sense if the weather will remain cold and they should continue to hunker down for the winter in their immediate surroundings, I doubt that they would be able to determine the weather conditions of an area they do not live in. My explanatory variables of interest are the difference in temperature from February and March in Pennsylvania and the difference in average temperatures from February and March across the United States and whether or not less change in temperature corresponds with Punxsutawny Phil seeing his shadow. These variables will be measured in degrees Fahrenheit and Yes/No. The outcome variable of interest is if Punxsutawney Phil is better able to predict less change in temperature for Pennsylvania or for the US as a whole. This will also be measured in degrees Fahrenheit and Yes/No. If Punxsutawney Phil more accurately predicts the weather in Pennsylvania than the whole US, my alternate hypothesis will be correct. If there is little to no difference or he more accurately predicts the weather for the whole US, my null hypothesis will be correct.
