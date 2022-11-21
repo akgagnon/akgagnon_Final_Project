@@ -7,16 +7,39 @@ output:
     self_contained: false
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
 library(tidyverse)
 ```
 
-
-## Project thoughts
-
-I would like to research if female or male candidates are more likely run for public office multiple times. I hypothesize
+```{r}
+mental <- read_csv("data/mentalhealth.csv")
+names(mental) <- gsub(" ", "_", names(mental)) |> tolower()
+```
 
 ```{r}
-read_csv()
+mental|>
+    filter(group == "By Sex") |>
+    group_by(time_period, subgroup) |>
+    summarize(average = mean(value, na.rm = TRUE)) |>
+    ggplot(aes(x = time_period, y = average)) +
+    geom_line(aes(col = subgroup))
+
+mod_ex <- 
+  lm(
+    data = mental|>
+      filter(group == "By Sex"),
+   value ~ time_period + subgroup)
+
+summary(mod_ex)$coefficients |> knitr::kable(digits = 3)
 ```
+
+
+
+
+
 
