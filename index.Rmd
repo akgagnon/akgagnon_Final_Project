@@ -11,6 +11,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+How has the COVID-19 Pandemic affected mental health? Has the pandemic affected mental health differently depending on race and sex? In this study, I plan to explore how the pandemic has affected the mental health of men vs women and white people vs black people in the United States. I hypothesize that symptoms of anxiety and depression will spike around the third month following the beginning of the pandemic in March 2020. I also hypothesize that the pandemic will take more of a toll on women and black people than men and white people.The data I am using is from a survey conducted by the US Census Bureau called the Pulse Survey. The Pulse Survey was designed to document the impact of the pandemic on employment, consumer spending, housing, food security, education, and physical and mental health. For the purposes of this study we will be focusing on mental wellness. The data from the survey is a product of accurate and timely weekly estimates. It was conducted via internet questionnaire sent over email and text. Participants were selected randomly. 
+
 
 ```{r}
 library(tidyverse)
@@ -29,15 +31,30 @@ mental|>
     ggplot(aes(x = time_period, y = average)) +
     geom_line(aes(col = subgroup))
 
-mod_ex <- 
+sex_lm <- 
   lm(
     data = mental|>
       filter(group == "By Sex"),
    value ~ time_period + subgroup)
 
-summary(mod_ex)$coefficients |> knitr::kable(digits = 3)
+summary(sex_lm)$coefficients |> knitr::kable(digits = 3)
 ```
 
+```{r}
+mental|>
+    filter(group == "By Race/Hispanic ethnicity") |>
+    group_by(time_period, subgroup) |>
+    summarize(average = mean(value, na.rm = TRUE)) |>
+    ggplot(aes(x = time_period, y = average)) +
+    geom_line(aes(col = subgroup))
+
+race_lm <- 
+  lm(
+    data = mental|>
+      filter(group == "By Race/Hispanic ethnicity"),
+   value ~ time_period + subgroup)
+
+```
 
 
 
