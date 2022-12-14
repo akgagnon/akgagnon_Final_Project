@@ -8,53 +8,120 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+#Options
+options(
+  scipen = 9,
+  width = 100)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center")
 
-How has the COVID-19 Pandemic affected mental health? Has the pandemic affected mental health differently depending on race and sex? In this study, I plan to explore how the pandemic has affected the mental health of men vs women and white people vs black people in the United States. I hypothesize that symptoms of anxiety and depression will spike around the third month following the beginning of the pandemic in March 2020. I also hypothesize that the pandemic will take more of a toll on women and black people than men and white people.The data I am using is from a survey conducted by the US Census Bureau called the Pulse Survey. The Pulse Survey was designed to document the impact of the pandemic on employment, consumer spending, housing, food security, education, and physical and mental health. For the purposes of this study we will be focusing on mental wellness. The data from the survey is a product of accurate and timely weekly estimates. It was conducted via internet questionnaire sent over email and text. Participants were all selected randomly. 
-
-
-```{r}
 library(tidyverse)
+library(broom)
+
+full <- read_csv("data/mentalhealth.csv")
+names(full) <- gsub(" ", "_", names(full)) |> tolower()
+
+mental <- full |>
+  filter(group == "By Sex",
+         indicator == "Symptoms of Anxiety Disorder or Depressive Disorder")
 ```
 
-```{r}
-mental <- read_csv("data/mentalhealth.csv")
-names(mental) <- gsub(" ", "_", names(mental)) |> tolower()
-```
+#Introduction
 
-```{r}
-mental|>
-    filter(group == "By Sex") |>
-    group_by(time_period, subgroup) |>
-    summarize(average = mean(value, na.rm = TRUE)) |>
-    ggplot(aes(x = time_period, y = average)) +
-    geom_line(aes(col = subgroup))
+The U.S. Census Bureau created the Household Pulse Survey to track how the effects of Covid-19 pandemic on American households. The survey was made to measure the impact of the pandemic on employment, consumer spending, food security, housing, disruptions in educational careers, and physical and mental well-being. For the purposes of this study, we will be focusing on how the Covid-19 pandemic affected the mental health of Americans. Using this data, we will investigate how the pandemic has affected the percentages of symptoms of anxiety and/or depression in men versus women. 
 
-sex_lm <- 
-  lm(
-    data = mental|>
-      filter(group == "By Sex"),
-   value ~ time_period + subgroup)
+#Data
+The Household Pulse Survey was conducted from April of 2020 through October of 2022. The survey was sent out via email and text message and conducted online. Household that were linked to one or more email addresses or phone numbers were selected randomly to participate. Surveys asking about the mental health of participants were sent out 50 times over the course of the testing period. Data from these surveys were collected during periods ranging from 5 days to two weeks.The mental health of the Household Pulse Survey subjects was measured using a four point scale. The percentage of subjects who reported feelings symptoms of anxiety and/or depression was then recorded. It is the percentage numbers that we will be working with in this study; thus, when "points" are discussed, we are working off of a 100 point scale.
 
-summary(sex_lm)$coefficients |> knitr::kable(digits = 3)
-```
+I hypothesize that over the course of the pandemic, the percentage of people experiencing symptoms of anxiety and/or depression will change. I also hypothesize that the percentage of women who experience symptoms of anxiety and/or depression will be greater than the percentage of men who experience anxiety and depression throughout the course of the whole study. 
+
+This analysis covers Our analyses cover county-level preferences, immigrant detention, and sheriff electoral behavior for 2,493 unique counties from 2010 to 2015. Our research design is observational, correlational analysis, and makes no causal assumptions or claims.
+
 
 ```{r}
 mental|>
-    filter(group == "By Race/Hispanic ethnicity") |>
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  labs(x = "Percentage of People Reporting Symptoms of Anxiety and/or Depression", y = "Frequency")
+```
+The results of the Household Pulse Survey provide us with our outcome variable, the percentage of people reporting symptoms of anxiety and/or depression. The outcome ranges from 24.4 to 47.6 with a median value of 34.75 and a mean of 34.99. This means that over the course of the 50 data collection time periods, results ranged from 24.4% to 47.6% of survey participants reporting symptoms of anxiety and/or depression. On average, 34.99% of survey participants reported feeling symptoms of anxiety and/or depression.
+
+#Results
+
+```{r}
+ggplot(data = mental,
+       mapping = aes(x = subgroup,
+                     y = value)) +
+  geom_boxplot() +
+  labs(x = "Gender",
+       y = "Percentage Reporting Symptoms of Anxiety and/or Depression")
+  
+```
+The above bar-plot suggests that on average, 38.69% of women surveyed reported experiencing symptoms of anxiety and/or depression while 31.29% of men surveyed reported experiencing symptoms of anxiety and/or depression.
+
+```{r}
+mental|>
     group_by(time_period, subgroup) |>
     summarize(average = mean(value, na.rm = TRUE)) |>
     ggplot(aes(x = time_period, y = average)) +
-    geom_line(aes(col = subgroup))
+    geom_line(aes(col = subgroup)) +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(x = "Time Period", y = "Percentage of People Reporting Symptoms of Anxiety and/or Depression", title = "Symptoms of Anxiety and/or Depression in Men vs Women", subtitle = "Over the course of the Covid-19 Pandemic")
 
-race_lm <- 
-  lm(
-    data = mental|>
-      filter(group == "By Race/Hispanic ethnicity"),
-   value ~ time_period + subgroup)
-
+#consider using a bar plot median mental health men vs women
 ```
+The above plot helps us to better visualize the data so that the third variable time is included. The plot suggests that there is a downward correlation between reporting experiencing symptoms of anxiety and/or depression. It also suggests that women were consistently more likely to report experiencing symptoms of anxiety and/or depression over the course of the 50 survey time periods. Regression analysis will provide a more in depth look into this seemingly negative relationship.
+
+#Regression Results
+The following tables are the results from two regression models. The first is a bivariate model which regresses the percentage of people reporting symptoms of anxiety and/or depression on time period. The second is a multivariate model which takes into account the gender of the people reporting symptoms of anxiety and/or depression. 
+```{r}
+bi_lm <- lm(
+  data = mental,
+  value ~ time_period)
+
+modelsummary::modelsummary(bi_lm,
+                           title = "Bivariate Model",
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+
+multi_lm <- lm(
+    data = mental|>
+      mutate(female = if_else(subgroup == "Female", 1,0)),
+      value ~ female + time_period)
+
+modelsummary::modelsummary(multi_lm,
+                           title = "Multivariate Model",
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
+The bivariate model suggests that on average and holding all else constant, all people participating in the study regardless of gender reported experiencing less symptoms of anxiety and/or depression from the time the survey began to the time that it ended. We can see this because the coefficient "time_period" value is -0.139 which tells us that on average for every one survey time-period increase, the percentage of people reporting symptoms of anxiety and/or depression decreased by 0.139 points. 
+
+The multivariate model suggests that on average and holding all else constant, the percentage of women reporting symptoms of anxiety and/or depression was 7.41 points higher than the percentage of men reporting symptoms of anxiety and/or depression.
+
+#Statistical significance
+
+In both the bivariate and multivariate models, the association between reported symptoms of anxiety and/or depression and time period is statistically significant at the test level α = 0.05.The p-value on the coefficient in both models is < 0.001. If hypothesizing that the relationship between symptoms of anxiety and/or depression and time period was non-zero, then the coefficient’s p-value of > 0.001 would suggest there is a near 0% probability that the estimated association observed here is as insignificant as any estimated relationship from the null distribution. This means that there is a nearly 100% probability that the estimated relationship is not a random result but rather a statistically significant one because it is so different from what the relationship would look like in the null distribution.
+
+If we assume that the sampling distribution of survey time periods is approximately normal, then the standard error on the coefficient estimates for reported symptoms of anxiety and/or depression can be used to construct a confidence interval of 95%. The z-score that captures 95% of the data assuming a normal distribution is 1.96. 1.96 can therefore be multiplied by the coefficient standard error and that product can be added and subtracted to the coefficient point estimate to produce the upper and lower bound limits of a 95% confidence interval.
+
+The bivariate model 95% confidence interval is below.
+βPreferences=−0.139∈(-0.2082754, -0.07040409)
+
+The multivariate model 95% confidence interval is below.
+
+βPreferences=−0.139∈(-0.1854745, -0.09320495)
+
+This means that 95% of regression estimated correlations between the percentage of people reporting symptoms of anxiety and/or depression and time period would be within the intervals listed above.
+
+
+
+
+
 
 
 

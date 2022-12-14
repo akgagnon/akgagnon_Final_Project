@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["akgagnon-Final-Project.pdf","data/mentalhealth.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["akgagnon-Final-Project.pdf","data/mentalhealth.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1473,6 +1473,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="index_files/header-attrs-2.16/header-attrs.js"></script>
+  <script src="index_files/kePrint-0.0.1/kePrint.js"></script>
+  <link href="index_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="index_files/popper-2.6.0/popper.min.js"></script>
   <link href="index_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1517,90 +1519,229 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<p>How has the COVID-19 Pandemic affected mental health? Has the pandemic affected mental health differently depending on race and sex? In this study, I plan to explore how the pandemic has affected the mental health of men vs women and white people vs black people in the United States. I hypothesize that symptoms of anxiety and depression will spike around the third month following the beginning of the pandemic in March 2020. I also hypothesize that the pandemic will take more of a toll on women and black people than men and white people.The data I am using is from a survey conducted by the US Census Bureau called the Pulse Survey. The Pulse Survey was designed to document the impact of the pandemic on employment, consumer spending, housing, food security, education, and physical and mental health. For the purposes of this study we will be focusing on mental wellness. The data from the survey is a product of accurate and timely weekly estimates. It was conducted via internet questionnaire sent over email and text. Participants were all selected randomly.</p>
+<p>#Introduction</p>
+<p>The U.S. Census Bureau created the Household Pulse Survey to track how the effects of Covid-19 pandemic on American households. The survey was made to measure the impact of the pandemic on employment, consumer spending, food security, housing, disruptions in educational careers, and physical and mental well-being. For the purposes of this study, we will be focusing on how the Covid-19 pandemic affected the mental health of Americans. Using this data, we will investigate how the pandemic has affected the percentages of symptoms of anxiety and/or depression in men versus women.</p>
+<p>#Data
+The Household Pulse Survey was conducted from April of 2020 through October of 2022. The survey was sent out via email and text message and conducted online. Household that were linked to one or more email addresses or phone numbers were selected randomly to participate. Surveys asking about the mental health of participants were sent out 50 times over the course of the testing period. Data from these surveys were collected during periods ranging from 5 days to two weeks.The mental health of the Household Pulse Survey subjects was measured using a four point scale. The percentage of subjects who reported feelings symptoms of anxiety and/or depression was then recorded. It is the percentage numbers that we will be working with in this study; thus, when “points” are discussed, we are working off of a 100 point scale.</p>
+<p>I hypothesize that over the course of the pandemic, the percentage of people experiencing symptoms of anxiety and/or depression will change. I also hypothesize that the percentage of women who experience symptoms of anxiety and/or depression will be greater than the percentage of men who experience anxiety and depression throughout the course of the whole study.</p>
+<p>This analysis covers Our analyses cover county-level preferences, immigrant detention, and sheriff electoral behavior for 2,493 unique counties from 2010 to 2015. Our research design is observational, correlational analysis, and makes no causal assumptions or claims.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span></code></pre>
+<p><img src="index_files/figure-html5/unnamed-chunk-1-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-</div>
+<p>The results of the Household Pulse Survey provide us with our outcome variable, the percentage of people reporting symptoms of anxiety and/or depression. The outcome ranges from 24.4 to 47.6 with a median value of 34.75 and a mean of 34.99. This means that over the course of the 50 data collection time periods, results ranged from 24.4% to 47.6% of survey participants reporting symptoms of anxiety and/or depression. On average, 34.99% of survey participants reported feeling symptoms of anxiety and/or depression.</p>
+<p>#Results</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mental</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"data/mentalhealth.csv"</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>mental</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span><span class='op'>(</span><span class='st'>" "</span>, <span class='st'>"_"</span>, <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>mental</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>tolower</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-</div>
+<p>The above bar-plot suggests that on average, 38.69% of women surveyed reported experiencing symptoms of anxiety and/or depression while 31.29% of men surveyed reported experiencing symptoms of anxiety and/or depression.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mental</span><span class='op'>|&gt;</span></span>
-<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>group</span> <span class='op'>==</span> <span class='st'>"By Sex"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>time_period</span>, <span class='va'>subgroup</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>average <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>value</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time_period</span>, y <span class='op'>=</span> <span class='va'>average</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='va'>subgroup</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-<img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" />
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>sex_lm</span> <span class='op'>&lt;-</span> </span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span></span>
-<span>    data <span class='op'>=</span> <span class='va'>mental</span><span class='op'>|&gt;</span></span>
-<span>      <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>group</span> <span class='op'>==</span> <span class='st'>"By Sex"</span><span class='op'>)</span>,</span>
-<span>   <span class='va'>value</span> <span class='op'>~</span> <span class='va'>time_period</span> <span class='op'>+</span> <span class='va'>subgroup</span><span class='op'>)</span></span>
-<span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>sex_lm</span><span class='op'>)</span><span class='op'>$</span><span class='va'>coefficients</span> <span class='op'>|&gt;</span> <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span></code></pre>
-</div>
-<table>
+<p>The above plot helps us to better visualize the data so that the third variable time is included. The plot suggests that there is a downward correlation between reporting experiencing symptoms of anxiety and/or depression. It also suggests that women were consistently more likely to report experiencing symptoms of anxiety and/or depression over the course of the 50 survey time periods. Regression analysis will provide a more in depth look into this seemingly negative relationship.</p>
+#Regression Results
+The following tables are the results from two regression models. The first is a bivariate model which regresses the percentage of people reporting symptoms of anxiety and/or depression on time period. The second is a multivariate model which takes into account the gender of the people reporting symptoms of anxiety and/or depression.
+<div class="layout-chunk" data-layout="l-body">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 1: </span>Bivariate Model
+</caption>
 <thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Estimate</th>
-<th style="text-align: right;">Std. Error</th>
-<th style="text-align: right;">t value</th>
-<th style="text-align: right;">Pr(&gt;|t|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Model 1
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">36.113</td>
-<td style="text-align: right;">0.694</td>
-<td style="text-align: right;">52.063</td>
-<td style="text-align: right;">0</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+38.546
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">time_period</td>
-<td style="text-align: right;">-0.119</td>
-<td style="text-align: right;">0.021</td>
-<td style="text-align: right;">-5.624</td>
-<td style="text-align: right;">0</td>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 1.018
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">subgroupMale</td>
-<td style="text-align: right;">-6.308</td>
-<td style="text-align: right;">0.613</td>
-<td style="text-align: right;">-10.291</td>
-<td style="text-align: right;">0</td>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+time_period
+</td>
+<td style="text-align:center;">
+−0.139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.035
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.141
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.132
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 1: </span>Multivariate Model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Model 1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+34.843
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.759
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:center;">
+7.406
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.671
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+time_period
+</td>
+<td style="text-align:center;">
+−0.139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.023
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.619
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.611
+</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mental</span><span class='op'>|&gt;</span></span>
-<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>group</span> <span class='op'>==</span> <span class='st'>"By Race/Hispanic ethnicity"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>time_period</span>, <span class='va'>subgroup</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>average <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>value</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time_period</span>, y <span class='op'>=</span> <span class='va'>average</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='va'>subgroup</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
-</div>
-<img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" />
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>race_lm</span> <span class='op'>&lt;-</span> </span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span></span>
-<span>    data <span class='op'>=</span> <span class='va'>mental</span><span class='op'>|&gt;</span></span>
-<span>      <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>group</span> <span class='op'>==</span> <span class='st'>"By Race/Hispanic ethnicity"</span><span class='op'>)</span>,</span>
-<span>   <span class='va'>value</span> <span class='op'>~</span> <span class='va'>time_period</span> <span class='op'>+</span> <span class='va'>subgroup</span><span class='op'>)</span></span></code></pre>
-</div>
-</div>
+<p>The bivariate model suggests that on average and holding all else constant, all people participating in the study regardless of gender reported experiencing less symptoms of anxiety and/or depression from the time the survey began to the time that it ended. We can see this because the coefficient “time_period” value is -0.139 which tells us that on average for every one survey time-period increase, the percentage of people reporting symptoms of anxiety and/or depression decreased by 0.139 points.</p>
+<p>The multivariate model suggests that on average and holding all else constant, the percentage of women reporting symptoms of anxiety and/or depression was 7.41 points higher than the percentage of men reporting symptoms of anxiety and/or depression.</p>
+<p>#Statistical significance</p>
+<p>In both the bivariate and multivariate models, the association between reported symptoms of anxiety and/or depression and time period is statistically significant at the test level α = 0.05.The p-value on the coefficient in both models is &lt; 0.001. If hypothesizing that the relationship between symptoms of anxiety and/or depression and time period was non-zero, then the coefficient’s p-value of &gt; 0.001 would suggest there is a near 0% probability that the estimated association observed here is as insignificant as any estimated relationship from the null distribution. This means that there is a nearly 100% probability that the estimated relationship is not a random result but rather a statistically significant one because it is so different from what the relationship would look like in the null distribution.</p>
+<p>If we assume that the sampling distribution of survey time periods is approximately normal, then the standard error on the coefficient estimates for reported symptoms of anxiety and/or depression can be used to construct a confidence interval of 95%. The z-score that captures 95% of the data assuming a normal distribution is 1.96. 1.96 can therefore be multiplied by the coefficient standard error and that product can be added and subtracted to the coefficient point estimate to produce the upper and lower bound limits of a 95% confidence interval.</p>
+<p>The bivariate model 95% confidence interval is below.
+βPreferences=−0.139∈(-0.2082754, -0.07040409)</p>
+<p>The multivariate model 95% confidence interval is below.</p>
+<p>βPreferences=−0.139∈(-0.1854745, -0.09320495)</p>
+<p>This means that 95% of regression estimated correlations between the percentage of people reporting symptoms of anxiety and/or depression and time period would be within the intervals listed above.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
