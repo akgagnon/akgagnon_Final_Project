@@ -65,7 +65,7 @@ ggplot(data = mental,
        y = "Percentage Reporting Symptoms of Anxiety and/or Depression")
   
 ```
-The above bar-plot suggests that on average, 38.69% of women surveyed reported experiencing symptoms of anxiety and/or depression while 31.29% of men surveyed reported experiencing symptoms of anxiety and/or depression.
+The above box-plot suggests that on average, 38.69% of women surveyed reported experiencing symptoms of anxiety and/or depression while 31.29% of men surveyed reported experiencing symptoms of anxiety and/or depression.
 
 ```{r}
 mental|>
